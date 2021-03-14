@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Testing_Task_Crossinform
 {
@@ -19,7 +17,6 @@ namespace Testing_Task_Crossinform
             string filePath = "";
             bool fileOpened = false;
             int unitLength = 0;
-            int Length = 0;
             Stopwatch stopWatch = new Stopwatch();
             StreamReader streamReader;
             string fileString = "";
@@ -40,8 +37,7 @@ namespace Testing_Task_Crossinform
                     stopWatch.Start();
                     streamReader = new StreamReader(filePath);
                     fileString = streamReader.ReadToEnd();
-                    Length = fileString.Length;
-                    unitLength = Length / 3;
+                    unitLength = fileString.Length / 3;
                 }
                 else
                 {
@@ -49,33 +45,18 @@ namespace Testing_Task_Crossinform
                 }
             }
 
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    string str = fileString.Substring(unitLength*i, unitLength + 1);
-            //    string strng;
-            //    for (int j = 0; j < str.Length - 2; j++)
-            //    {
-            //        if (char.IsLetter(str[j]) && char.IsLetter(str[j + 1]) && char.IsLetter(str[j + 2]))
-            //        {
-            //            strng = String.Concat(str[j], str[j + 1], str[j + 2]).ToLower();
-            //            top.Add(strng);
-            //            //Console.WriteLine(strng);
-            //        }
-            //    }
-            //}
-
             thread1 = new Thread(
                 delegate ()
                 {
 
                     string str = fileString.Substring(0, unitLength + 1);
-                    string strng;
+                    string triplet;
                     for (int j = 0; j < str.Length - 2; j++)
                     {
                         if (char.IsLetter(str[j]) && char.IsLetter(str[j + 1]) && char.IsLetter(str[j + 2]))
                         {
-                            strng = String.Concat(str[j], str[j + 1], str[j + 2]).ToLower();
-                            top.Add(strng);
+                            triplet = String.Concat(str[j], str[j + 1], str[j + 2]).ToLower();
+                            top.Add(triplet);
                         }
                     }
                 });
@@ -85,13 +66,13 @@ namespace Testing_Task_Crossinform
                 {
 
                     string str = fileString.Substring(unitLength - 1, unitLength + 1);
-                    string strng;
+                    string triplet;
                     for (int j = 0; j < str.Length - 2; j++)
                     {
                         if (char.IsLetter(str[j]) && char.IsLetter(str[j + 1]) && char.IsLetter(str[j + 2]))
                         {
-                            strng = String.Concat(str[j], str[j + 1], str[j + 2]).ToLower();
-                            top.Add(strng);
+                            triplet = String.Concat(str[j], str[j + 1], str[j + 2]).ToLower();
+                            top.Add(triplet);
                         }
                     }
                 });
@@ -101,13 +82,13 @@ namespace Testing_Task_Crossinform
                 {
 
                     string str = fileString.Substring(unitLength * 2 - 1);
-                    string strng;
+                    string triplet;
                     for (int j = 0; j < str.Length - 2; j++)
                     {
                         if (char.IsLetter(str[j]) && char.IsLetter(str[j + 1]) && char.IsLetter(str[j + 2]))
                         {
-                            strng = String.Concat(str[j], str[j + 1], str[j + 2]).ToLower();
-                            top.Add(strng);
+                            triplet = String.Concat(str[j], str[j + 1], str[j + 2]).ToLower();
+                            top.Add(triplet);
                         }
                     }
                 });

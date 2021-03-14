@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Testing_Task_Crossinform
 {
@@ -12,16 +10,6 @@ namespace Testing_Task_Crossinform
         {
             top = new ConcurrentQueue<NumberOfOccurrences>();
         }
-
-        //public List<string> TripletsInTop()
-        //{
-        //    List<string> tripletsInTop = new List<string>();
-        //    foreach (var item in top)
-        //    {
-        //        tripletsInTop.Add(item.nameOfTriplet);
-        //    }
-        //    return tripletsInTop;
-        //}
 
         public void Add(string Triplet)
         {
